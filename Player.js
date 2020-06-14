@@ -17,7 +17,7 @@ class Player extends Phaser.Physics.Arcade.Image {
 
 
 
-    update(cursorKeys, player) {
+    update(cursorKeys, player, anims, play) {
 
         
 
