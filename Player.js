@@ -19,8 +19,34 @@ class Player extends Phaser.Physics.Arcade.Image {
 
     update(cursorKeys) {
 
+
+        if (cursorKeys.left.isDown)
+        {
+            this.body.setVelocityX(-160);
+        
+            this.body.anims.play('left', true);
+        }
+        else if (cursorKeys.right.isDown)
+        {
+            this.body.setVelocityX(160);
+        
+            this.body.anims.play('right', true);
+        }
+        else
+        {
+            this.body.setVelocityX(0);
+        
+            this.body.anims.play('turn');
+        }
+        
+        if (this.cursorKeys.up.isDown && this.body.touching.down)
+        {
+            this.body.setVelocityY(-325);
+        }    
+
+
     
-     this.movePlayerManager(cursorKeys);
+     //this.movePlayerManager(cursorKeys);
        
        
       } //End update area
