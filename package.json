@@ -1,0 +1,15 @@
+{
+  "name": "game-2",
+  "version": "1.0.0",
+  "description": "game 3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^0.12.3",
+    "npm": "^6.14.5"
+  }
+}
