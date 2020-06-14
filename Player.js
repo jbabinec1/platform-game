@@ -1,4 +1,4 @@
-class Player extends Phaser.Physics.Arcade.Image {
+class Player extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y, key) {
         super(scene, x, y, key);
         this.scene = scene; 
@@ -11,38 +11,40 @@ class Player extends Phaser.Physics.Arcade.Image {
 
         //Add player to existing scene
         this.scene.add.existing(this);
+        this.scene.physics.add.existing(this)
 
 
     }
 
 
 
-    update(cursorKeys, player, anims, play) {
+    update(cursorKeys, player) {
 
         
 
         if (cursorKeys.left.isDown)
         {
-            this.body.setVelocityX(-160);
+            player.setVelocityX(-160);
         
             player.anims.play('left', true);
         }
         else if (cursorKeys.right.isDown)
         {
-            this.body.setVelocityX(160);
+            player.setVelocityX(160);
         
             player.anims.play('right', true);
         }
+      
         else
         {
-            this.body.setVelocityX(0);
+            player.setVelocityX(0);
         
             player.anims.play('turn');
-        }
+        } 
         
         if (cursorKeys.up.isDown && player.body.touching.down)
         {
-            this.body.setVelocityY(-325);
+            player.setVelocityY(-325);
         }
 
 
@@ -57,34 +59,7 @@ class Player extends Phaser.Physics.Arcade.Image {
          
        
        
-          movePlayerManager(cursorKeys){
-       
-               if (cursorKeys.left.isDown)
-       {
-           this.body.setVelocityX(-160);
-       
-           this.body.anims.play('left', true);
-       }
-       else if (cursorKeys.right.isDown)
-       {
-           this.body.setVelocityX(160);
-       
-           this.body.anims.play('right', true);
-       }
-       else
-       {
-           this.body.setVelocityX(0);
-       
-           this.body.anims.play('turn');
-       }
-       
-       if (cursorKeys.up.isDown && this.body.touching.down)
-       {
-           this.body.setVelocityY(-325);
-       }
-       
-       
-          } 
+         
 
 
 } // End of Player class 

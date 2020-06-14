@@ -23,7 +23,6 @@ class Scene2 extends Phaser.Scene {
       this.cursorKeys = this.input.keyboard.createCursorKeys(); 
       
 
-
       // bomb stuff
       this.bombs = this.physics.add.group();
       this.physics.add.collider(this.bombs, this.platforms);
@@ -41,7 +40,7 @@ class Scene2 extends Phaser.Scene {
 
     
  //this.movePlayerManager();
-   this.player.update(this.cursorKeys, this.player, this.anims, this.play);
+   this.player.update(this.cursorKeys, this.player);
 
    } //End update area
 
