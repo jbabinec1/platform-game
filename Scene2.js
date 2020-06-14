@@ -15,9 +15,9 @@ class Scene2 extends Phaser.Scene {
      
       this.physics.world.setBoundsCollision();
 
-      this.player = this.physics.add.sprite(100, 150, 'player');
+      this.player = new Player(this, 100, 150, 'player');
       this.player.setBounce(0.2);
-      this.player.body.setCollideWorldBounds(true);
+      
       this.physics.add.collider(this.player, this.platforms); // Add physics for player on platform
 
       this.cursorKeys = this.input.keyboard.createCursorKeys(); 
@@ -40,10 +40,8 @@ class Scene2 extends Phaser.Scene {
    update() {
 
     
- this.movePlayerManager();
-
-
- 
+ //this.movePlayerManager();
+   this.player.update(this.cursorKeys);
 
    } //End update area
 
@@ -52,34 +50,7 @@ class Scene2 extends Phaser.Scene {
   
 
 
-   movePlayerManager(){
-
-        if (this.cursorKeys.left.isDown)
-{
-    this.player.setVelocityX(-160);
-
-    this.player.anims.play('left', true);
-}
-else if (this.cursorKeys.right.isDown)
-{
-    this.player.setVelocityX(160);
-
-    this.player.anims.play('right', true);
-}
-else
-{
-    this.player.setVelocityX(0);
-
-    this.player.anims.play('turn');
-}
-
-if (this.cursorKeys.up.isDown && this.player.body.touching.down)
-{
-    this.player.setVelocityY(-325);
-}
-
-
-   } 
+   
 
 
 

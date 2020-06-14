@@ -3,15 +3,24 @@ class Player extends Phaser.Physics.Arcade.Image {
         super(scene, x, y, key, frame);
         this.scene = scene; 
 
-        this.player.body.setCollideWorldBounds(true);
+        this.scene.physics.world.enable(this);
+        this.setImmovable(false);
+
+
+        this.body.setCollideWorldBounds(true);
+
+        //Add player to existing scene
+        this.scene.add.existing(this);
+
+
     }
 
 
 
-    update() {
+    update(cursorKeys) {
 
     
-     this.movePlayerManager();
+     this.movePlayerManager(cursorKeys);
        
        
       } //End update area
@@ -21,15 +30,15 @@ class Player extends Phaser.Physics.Arcade.Image {
          
        
        
-          movePlayerManager(){
+          movePlayerManager(cursorKeys){
        
-               if (this.cursorKeys.left.isDown)
+               if (cursorKeys.left.isDown)
        {
            this.body.setVelocityX(-160);
        
            this.body.anims.play('left', true);
        }
-       else if (this.cursorKeys.right.isDown)
+       else if (cursorKeys.right.isDown)
        {
            this.body.setVelocityX(160);
        
@@ -42,7 +51,7 @@ class Player extends Phaser.Physics.Arcade.Image {
            this.body.anims.play('turn');
        }
        
-       if (this.cursorKeys.up.isDown && this.body.touching.down)
+       if (cursorKeys.up.isDown && this.body.touching.down)
        {
            this.body.setVelocityY(-325);
        }
