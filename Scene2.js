@@ -41,7 +41,7 @@ class Scene2 extends Phaser.Scene {
 
     
  //this.movePlayerManager();
-   this.player.update(this.cursorKeys);
+   this.player.update(this.cursorKeys, this.player);
 
    } //End update area
 
